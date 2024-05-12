@@ -4,6 +4,7 @@ import { sequelize } from './models/index.js';  // Ensure all models and their a
 import passport from './config/passport.js';
 import authRoutes from './routes/authRoutes.js';
 import pingRoutes from './routes/pingRoutes.js';
+import projectRoutes from './routes/projectRoutes.js';
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use('/auth', authRoutes);
 app.use('/api', pingRoutes); // Use the ping route under the /api endpoint
-
+app.use('/api/projects', projectRoutes);
 // Sync database and then start the server
 sequelize.sync({ force: false }) // Set `force` to `true` to drop and re-create tables
     .then(() => {
