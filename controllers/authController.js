@@ -34,6 +34,9 @@ class AuthController {
         // To "logout", the client should discard the token. This function is a placeholder.
         res.status(200).send({ message: 'Logged out successfully' });
     }
+    async getUserInfo(req, res) {
+        res.status(200).send(req.user);
+    }
 }
 const authController = new AuthController();
 export default authController;
