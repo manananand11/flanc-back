@@ -24,7 +24,7 @@ app.use('/profiles', profileRoutes);
 sequelize.sync({ force: false }) // Set `force` to `true` to drop and re-create tables
     .then(() => {
         console.log('Database synchronized successfully.');
-        app.listen(3000, () => {
+        app.listen(3001, () => {
             console.log('Server running on port 3000');
         });
     })
