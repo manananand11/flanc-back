@@ -25,7 +25,7 @@ sequelize.sync({ force: false }) // Set `force` to `true` to drop and re-create 
     .then(() => {
         console.log('Database synchronized successfully.');
         app.listen(3001, () => {
-            console.log('Server running on port 3000');
+            console.log('Server running on port 3001');
         });
     })
     .catch((error) => {
