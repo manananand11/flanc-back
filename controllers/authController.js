@@ -4,7 +4,7 @@ import passport from 'passport';
 const JWT_SECRET = 'your_jwt_secret';
 class AuthController {
     async signup(req, res) {
-        const { username, password } = req.body;
+        const { username, password, name, type, age } = req.body;
         if (!username || !password) {
             return res.status(400).send({ message: 'Username and password required.' });
         }
@@ -13,7 +13,7 @@ class AuthController {
             if (userExists) {
                 return res.status(409).send({ message: 'User already exists.' });
             }
-            const user = await User.create({ username, password });
+            const user = await User.create({ username, password, name, type, age});
             res.status(201).send({ id: user.id, username: user.username });
         } catch (error) {
             res.status(500).send(error.message);
@@ -22,6 +22,7 @@ class AuthController {
     async login(req, res) {
         passport.authenticate('local', { session: false }, (err, user, info) => {
             if (err || !user) {
+                console.log(err, user, info)
                 return res.status(400).send(info);
             }
             const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1d' });

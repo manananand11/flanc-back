@@ -11,6 +11,10 @@ const Project = sequelize.define('Project', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -18,7 +22,11 @@ const Project = sequelize.define('Project', {
             model: 'Users',
             key: 'id'
         }
-    }
+    },
+    popularity: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
 }, {
     timestamps: true
 });

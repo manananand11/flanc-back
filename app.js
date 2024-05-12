@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { sequelize } from './models/index.js';  // Ensure all models and their associations are imported
+import User from './models/User.js';
 import passport from './config/passport.js';
 import authRoutes from './routes/authRoutes.js';
 import pingRoutes from './routes/pingRoutes.js';
